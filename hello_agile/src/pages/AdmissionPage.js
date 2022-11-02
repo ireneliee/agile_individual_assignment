@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
-// import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import {
   Typography, Grid, Divider, Box, CircularProgress
 } from "@mui/material";
@@ -10,19 +10,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function AdmissionPage() {
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [user, loading, error] = useAuthState(auth);
-//   const navigate = useNavigate();
-//   useEffect(() => {
-//     if (user) {
-//       toast.info("Successfully logged in.");
-//     }
-//     if (error) {
-//       console.log('Result ' + JSON.stringify(error));
-//       toast.error("Unable to logged in : " + error.message);
-//   }
-//   }, [user, loading]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      toast.info("Successfully logged in.");
+    }
+    if (error) {
+      console.log('Result ' + JSON.stringify(error));
+      toast.error("Unable to logged in : " + error.message);
+  }
+  }, [user, loading]);
   return (
     <>
       <ToastContainer />
@@ -41,7 +41,7 @@ export default function AdmissionPage() {
           <li>Check application status</li>
         </ul>
       </Box>
-      {/* <div className="login">
+      <div className="login">
       <div className="login__container">
         <input
           type="text"
@@ -73,7 +73,7 @@ export default function AdmissionPage() {
           Don't have an account? <Link to="/register">Register</Link> now.
         </div>
       </div>
-    </div> */}
+    </div>
     </>
   );
 }
