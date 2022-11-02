@@ -1,4 +1,9 @@
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { initializeApp } from "firebase/app";
+import { ToastContainer, toast } from 'react-toastify';
+
 import {
   GoogleAuthProvider,
   getAuth,
@@ -26,7 +31,7 @@ const firebaseConfig = {
     messagingSenderId: "849367641894",
     appId: "1:849367641894:web:d6bbc33bc8cbb9c57a9be7"
   };
-  
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -48,8 +53,8 @@ const signInWithGoogle = async () => {
       });
     }
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    // console.error(err);
+    alert(err);
   }
 };
 
@@ -57,8 +62,7 @@ const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    alert(err);
   }
 };
 
@@ -73,7 +77,6 @@ const registerWithEmailAndPassword = async (name, email, password) => {
       email,
     });
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
@@ -83,8 +86,8 @@ const sendPasswordReset = async (email) => {
     await sendPasswordResetEmail(auth, email);
     alert("Password reset link sent!");
   } catch (err) {
-    console.error(err);
-    alert(err.message);
+    console.error(err.message);
+    alert(err);
   }
 };
 
@@ -101,3 +104,23 @@ export {
   sendPasswordReset,
   logout,
 };
+
+export default function NotificationContainer() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    useEffect(() => {
+      if (user) {
+        toast.info("Successfully logged in.");
+      }
+      if (error) {
+        console.log('Result ' + JSON.stringify(error));
+        alert("Unable to logged in : " + error.message);
+    }
+    }, [user, loading]);
+    return (
+      <>
+      </>
+    );
+  }

@@ -9,6 +9,7 @@ import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NotificationContainer from "../firebase";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -35,7 +36,7 @@ export default function HomePage() {
 
     return (
         <>
-            <ToastContainer />
+            <NotificationContainer></NotificationContainer>
             <Typography variant="h4" style={{ marginLeft: "2em" }}>Website Homepage</Typography>
             <br />
             <Divider></Divider>

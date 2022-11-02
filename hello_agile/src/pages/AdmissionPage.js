@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NotificationContainer from "../firebase";
 
 
 export default function AdmissionPage() {
@@ -25,7 +26,7 @@ export default function AdmissionPage() {
   }, [user, loading]);
   return (
     <>
-      <ToastContainer />
+      <NotificationContainer></NotificationContainer>
       <Typography variant="h4" style={{ marginLeft: "2em" }}>Admission Page</Typography>
       <br />
       <Divider></Divider>

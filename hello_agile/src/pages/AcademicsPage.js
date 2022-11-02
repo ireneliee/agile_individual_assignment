@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NotificationContainer from "../firebase";
 
 
 export default function AcademicPage() {
@@ -28,7 +29,7 @@ export default function AcademicPage() {
     }, [user, loading]);
     return (
         <>
-            <ToastContainer />
+            <NotificationContainer></NotificationContainer>
             <Typography variant="h4" style={{ marginLeft: "2em" }}>Academics Page</Typography>
             <br />
             <Divider></Divider>
