@@ -5,8 +5,8 @@ import { Typography, Grid, Divider, Paper } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import NUSLogo from '../assets/NUSLogo.jpg';
 import { Link, useNavigate } from "react-router-dom";
-import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+// import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+// import { useAuthState } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,19 +19,19 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function HomePage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [user, loading, error] = useAuthState(auth);
-    const navigate = useNavigate();
-    useEffect(() => {
-        if (user) {
-            toast.info("Successfully logged in.");
-        }
-        if (error) {
-            console.log('Result ' + JSON.stringify(error));
-            toast.error("Unable to logged in : " + error.message);
-        }
-    }, [user, loading]);
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [user, loading, error] = useAuthState(auth);
+    // const navigate = useNavigate();
+    // useEffect(() => {
+    //     if (user) {
+    //         toast.info("Successfully logged in.");
+    //     }
+    //     if (error) {
+    //         console.log('Result ' + JSON.stringify(error));
+    //         toast.error("Unable to logged in : " + error.message);
+    //     }
+    // }, [user, loading]);
 
     return (
         <>
